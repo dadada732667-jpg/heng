@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เค้ามาง้อแล้วนะ 💗</title>
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; overflow:hidden;
+    display:flex; justify-content:center; align-items:center;
+    font-family:"Tahoma",sans-serif;
+    background:linear-gradient(135deg,#ffd6e7,#ffeaf3,#ffd1dc);
+    color:#7b304b;
+  }
+  .card{
+    width:min(90%,430px); padding:38px 25px;
+    text-align:center; background:rgba(255,255,255,.88);
+    border-radius:30px; box-shadow:0 15px 45px rgba(150,50,90,.2);
+    position:relative; z-index:2;
+  }
+  .heart{font-size:64px; animation:beat 1s infinite}
+  h1{margin:10px 0;font-size:30px}
+  p{font-size:21px;line-height:1.8;margin:8px 0}
+  .sorry{font-weight:bold;color:#e34d7b}
+  button{
+    border:0;border-radius:999px;padding:14px 24px;margin:12px 5px;
+    font-size:17px;font-weight:bold;cursor:pointer;
+    background:#ff6f9c;color:white;box-shadow:0 6px 15px #ff9fba;
+  }
+  button:hover{transform:scale(1.05)}
+  #answer{min-height:32px;font-weight:bold;color:#d63f70}
+  .float{
+    position:absolute;bottom:-40px;font-size:25px;
+    animation:up linear infinite;opacity:.8;
+  }
+  @keyframes beat{50%{transform:scale(1.15)}}
+  @keyframes up{to{transform:translateY(-110vh) rotate(20deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="heart">💗</div>
+  <h1>เธอออ เค้ามาง้อแล้วนะ 🥺</h1>
+  <p class="sorry">เธอ เค้าขอโทษ</p>
+  <p>เค้าผิดไปแล้ว<br>เค้ามาง้อออ 🥹</p>
+  <p>หายงอนนะคะะะ 💐💗</p>
+  <button onclick="forgive()">หายงอนแล้ว 💕</button>
+  <button onclick="hug()">ยังงอนอยู่ 😤</button>
+  <div id="answer"></div>
+</div>
+
+<script>
+function forgive(){
+  document.getElementById("answer").textContent="เย้!! ขอบคุณที่หายงอนนะคะ 🥹💗 รักที่สุดเลยย";
+  for(let i=0;i<18;i++) createHeart();
+}
+function hug(){
+  document.getElementById("answer").textContent="งั้นเค้าขอกอดง้อก่อนนะ 🫂🥺 หายงอนเร็ว ๆ น้าา";
+}
+function createHeart(){
+  const h=document.createElement("div");
+  h.className="float";
+  h.textContent=["💗","💕","💖","🌸"][Math.floor(Math.random()*4)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}
+setInterval(createHeart,700);
+</script>
+</body>
+</html>
